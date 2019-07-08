@@ -17,6 +17,7 @@ final class DarkSkyNetworkLoader: DarkSkyLoader {
 
     func forecast(for location: Location.Coordinates) -> AnyPublisher<Forecast, Error> {
         let url = URL(string: "https://api.darksky.net/forecast/\(apiKey)/\(location.lat),\(location.long)")!
+        debugPrint("loading \(url)")
         return session.dataTaskPublisher(for: url)
             .map { $0.data }
             .decode(type: Forecast.self, decoder: JSONDecoder())
@@ -57,7 +58,7 @@ final class DarkSkyController: BindableObject {
         }
     }
     
-    var cache: [String: Forecast] = [:] { didSet { sendDidChange() } }
+    private(set) var forecasts: [String: Forecast] = [:] { didSet { sendDidChange() } }
     
     var cancellables: [Cancellable] = []
     
@@ -66,7 +67,7 @@ final class DarkSkyController: BindableObject {
     }
     
     func forecast(for location: Location.Coordinates, forceReload: Bool = false) -> AnyPublisher<Forecast, Error> {
-        if let forecast = cache[location.id], forceReload == false {
+        if let forecast = forecasts[location.id], forceReload == false {
             return Just(forecast)
                 .setFailureType(to: Error.self)
                 .eraseToAnyPublisher()
@@ -74,9 +75,19 @@ final class DarkSkyController: BindableObject {
         
         let loader = self.loader.forecast(for: location)
         
-        cancellables += [loader.sink { [unowned self] (forecast) in self.cache[location.id] = forecast }]
+        cancellables += [loader
+            .sink { [unowned self] (forecast) in
+                self.forecasts[location.id] = forecast
+            }]
         
-        return loader.eraseToAnyPublisher()
+        cancellables += [loader.catch { (error) -> AnyPublisher<Forecast, Error> in
+            debugPrint("error: \(error)")
+            return Publishers.Empty<Forecast, Error>().eraseToAnyPublisher()
+        }.sink(receiveValue: { (_) in
+            debugPrint("done!")
+        })]
+        
+        return loader.share().eraseToAnyPublisher()
     }
 }
 

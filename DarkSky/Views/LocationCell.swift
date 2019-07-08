@@ -27,8 +27,8 @@ struct LocationCell : View {
                         .lineLimit(nil)
                 }
                 Spacer()
-                if (self.forecast != nil) {
-                    ForecastView(forecast: self.forecast!)
+                if (controller.forecasts[location.latLong.id] != nil) {
+                    ForecastView(forecast: controller.forecasts[location.latLong.id]!)
                 }
             }
         }
