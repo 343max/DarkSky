@@ -12,6 +12,12 @@ class DarkSkyTests: XCTestCase {
     }
     
     func testForecast() {
-        let forecast = try! json(Forecast.self, filename: "forecast")
+        _ = try! json(Forecast.self, filename: "forecast")
+    }
+    
+    func testError() {
+        let error = try! json(JSONError.self, filename: "usageLimitExceeded")
+        XCTAssertEqual(error.code, 403)
+        XCTAssertEqual(error.error, "daily usage limit exceeded")
     }
 }
