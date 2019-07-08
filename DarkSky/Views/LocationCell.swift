@@ -14,28 +14,33 @@ struct LocationCell : View {
 
         var body: some View {
             Text([forecast.currently.icon.emoji,
-                  forecast.currently.temperature.temperature.stringValue(weatherUnits.temperature)].joined())
+                  forecast.currently.temperature.temperature.stringValue(weatherUnits.temperature)].joined(separator: " "))
                 .font(.system(size: 24, design: .default))
                 .fontWeight(.semibold)
+                .color(.white)
+                .shadow(color: Color.black.opacity(0.6), radius: 4, x: 0, y: 2)
         }
     }
 
     var body: some View {
-        NavigationLink(destination: LocationDetailsView(location: location, controller: controller)) {
-            HStack {
-                VStack(alignment: .leading) {
+        ZStack {
+            MapView(center: location.latLong)
+                .padding([.leading, .trailing], -20)
+                .padding([.top, .bottom], -6)
+            NavigationLink(destination: LocationDetailsView(location: location, controller: controller)) {
+                HStack {
                     Text(location.name)
                         .font(.headline)
-                    Text(location.address)
-                        .font(.footnote)
-                        .lineLimit(nil)
-                }
-                Spacer()
-                if (controller.forecasts[location.latLong.id] != nil) {
-                    ForecastView(forecast: controller.forecasts[location.latLong.id]!)
+                        .color(.white)
+                        .shadow(color: Color.black.opacity(0.6), radius: 4, x: 0, y: 2)
+                    Spacer()
+                    if (controller.forecasts[location.latLong.id] != nil) {
+                        ForecastView(forecast: controller.forecasts[location.latLong.id]!)
+                    }
                 }
             }
         }
+        .frame(height: 60, alignment: .center)
         .onReceive(controller.forecast(for: location.latLong).receive(on: RunLoop.main).ignoreErrors()) {
             self.forecast = $0
         }
