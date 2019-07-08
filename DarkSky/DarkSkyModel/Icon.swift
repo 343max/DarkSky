@@ -10,4 +10,5 @@ enum Icon: String, Codable {
     case fog = "fog"
     case cloudy = "cloudy"
     case partlyCloudyDay = "partly-cloudy-day"
-    case partlyCloudyNight = "partly-cloudy-night"}
+    case partlyCloudyNight = "partly-cloudy-night"
+}

@@ -9,7 +9,7 @@ import Foundation
 struct DailyDatum: Codable {
     let time: Date
     let summary: String
-    let icon: String
+    let icon: Icon
     let sunriseTime: Date
     let sunsetTime: Date
     let moonPhase: Double

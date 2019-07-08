@@ -9,41 +9,22 @@ struct LocationDetailsView : View {
     
     var cancellable: Cancellable? = nil
     
-    struct ForecastView: View {
-        let forecast: Forecast
-        @Environment(\.weatherUnits) private var weatherUnits: WeatherUnits
-        
-        var body: some View {
-            Text(forecast.currently.temperature.temperature.stringValue(weatherUnits.temperature)).font(.headline)
-        }
-    }
-    
     @ObjectBinding var controller: DarkSkyController
     
     var body: some View {
         ScrollView {
             VStack {
-                HStack {
-                    Text(location.address).lineLimit(nil)
-                    Spacer()
-                }.padding(.all)
                 if (forecast != nil) {
-                    ForecastView(forecast: forecast!)
+                    DetailedForecastView(forecast: forecast!)
+                } else {
+                    SpinnerView(style: .large).padding(.all)
                 }
             }
         }
         .navigationBarTitle(location.name)
-        .onAppear {
-            _ = self.controller.forecast(for: self.location.latLong)
-                .ignoreErrors()
-                .receive(on: RunLoop.main)
-                .sink {
-                    self.forecast = $0
-                }
+        .onReceive(controller.forecast(for: location.latLong).ignoreErrors().receive(on: RunLoop.main)) {
+            self.forecast = $0
         }
-//        .onReceive(controller.forecast(for: location.latLong).ignoreErrors().receive(on: RunLoop.main)) {
-//            self.forecast = $0
-//        }
     }
 }
 

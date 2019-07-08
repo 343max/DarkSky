@@ -27,11 +27,14 @@ final class DarkSkyNetworkLoader: DarkSkyLoader {
 #if DEBUG
 
 final class DarkSkyDiskLoader: DarkSkyLoader {
-    func forecast(for location: Location.Coordinates) -> AnyPublisher<Forecast, Error> {
+    static var forecast: Forecast {
         let url = Bundle.main.url(forResource: "forecast", withExtension: "json")!
         let data = try! Data(contentsOf: url)
-        let forecast = try! JSONDecoder().decode(Forecast.self, from: data)
-        return Just(forecast)
+        return try! JSONDecoder().decode(Forecast.self, from: data)
+    }
+    
+    func forecast(for location: Location.Coordinates) -> AnyPublisher<Forecast, Error> {
+        return Just(type(of: self).forecast)
             .setFailureType(to: Error.self)
             .eraseToAnyPublisher()
     }
