@@ -13,7 +13,8 @@ struct LocationCell : View {
         @Environment(\.weatherUnits) private var weatherUnits: WeatherUnits
 
         var body: some View {
-            Text(forecast.currently.temperature.temperature.stringValue(weatherUnits.temperature))
+            Text([forecast.currently.icon.emoji,
+                  forecast.currently.temperature.temperature.stringValue(weatherUnits.temperature)].joined())
                 .font(.system(size: 24, design: .default))
                 .fontWeight(.semibold)
         }
