@@ -11,7 +11,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: LocationListView(locations: Location.DVLocations))
+            
+            let controller = DarkSkyController(loader: DarkSkyNetworkLoader(apiKey: "ab6d23ede69ee424bd7a4de3e4b7c831"))
+            
+            let view = NavigationView(content: {
+                LocationListView(locations: Location.DVLocations, controller: controller)
+            })
+            
+            window.rootViewController = UIHostingController(rootView: view)
             self.window = window
             window.makeKeyAndVisible()
         }
