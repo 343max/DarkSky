@@ -24,7 +24,7 @@ struct DetailedForecastView : View {
                 Text(HourlyView.dateFormatter.string(from: hourly.time))
                     .font(.caption)
                     .color(.gray)
-            }.frame(width: 60)
+            }.frame(width: 80)
         }
     }
     
@@ -43,10 +43,13 @@ struct DetailedForecastView : View {
                 Text(DailyView.dateFormatter.string(from: daily.time))
                 Spacer()
                 Text(daily.icon.emoji)
-                Spacer().frame(width: 40)
+                Spacer()
+                    .frame(width: 40)
                 Text(daily.temperatureHigh.temperature.stringValue(weatherUnits.temperature))
+                    .frame(width: 55)
                 Text(daily.temperatureLow.temperature.stringValue(weatherUnits.temperature))
                     .color(.gray)
+                    .frame(width: 55)
             }.padding(.bottom, 2)
         }
 
