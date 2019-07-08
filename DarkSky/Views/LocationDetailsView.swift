@@ -13,7 +13,7 @@ struct LocationDetailsView : View {
         let forecast: Forecast
         
         var body: some View {
-            Text("\(forecast.currently.temperature) °F").font(.headline)
+            Text(forecast.currently.temperature.temperature.stringValue(.celsius)).font(.headline)
         }
     }
     
