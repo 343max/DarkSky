@@ -7,45 +7,45 @@ import Foundation
 
 // MARK: - DailyDatum
 struct DailyDatum: Codable {
-    let time: Int
+    let time: Date
     let summary: String
     let icon: String
-    let sunriseTime: Int
-    let sunsetTime: Int
+    let sunriseTime: Date
+    let sunsetTime: Date
     let moonPhase: Double
     let precipIntensity: Double
     let precipIntensityMax: Double
-    let precipIntensityMaxTime: Int
+    let precipIntensityMaxTime: Date
     let precipProbability: Double
     let precipType: PrecipType?
     let temperatureHigh: Double
-    let temperatureHighTime: Int
+    let temperatureHighTime: Date
     let temperatureLow: Double
-    let temperatureLowTime: Int
+    let temperatureLowTime: Date
     let apparentTemperatureHigh: Double
-    let apparentTemperatureHighTime: Int
+    let apparentTemperatureHighTime: Date
     let apparentTemperatureLow: Double
-    let apparentTemperatureLowTime: Int
+    let apparentTemperatureLowTime: Date
     let dewPoint: Double
     let humidity: Double
     let pressure: Double
     let windSpeed: Double
     let windGust: Double
-    let windGustTime: Int
+    let windGustTime: Date
     let windBearing: Int
     let cloudCover: Double
     let uvIndex: Int
-    let uvIndexTime: Int
+    let uvIndexTime: Date
     let visibility: Double
     let ozone: Double
     let temperatureMin: Double
-    let temperatureMinTime: Int
+    let temperatureMinTime: Date
     let temperatureMax: Double
-    let temperatureMaxTime: Int
+    let temperatureMaxTime: Date
     let apparentTemperatureMin: Double
-    let apparentTemperatureMinTime: Int
+    let apparentTemperatureMinTime: Date
     let apparentTemperatureMax: Double
-    let apparentTemperatureMaxTime: Int
+    let apparentTemperatureMaxTime: Date
 
     enum CodingKeys: String, CodingKey {
         case time

@@ -83,7 +83,7 @@ final class DarkSkyController: BindableObject {
             debugPrint("error: \(error)")
             return Publishers.Empty<Forecast, Error>().eraseToAnyPublisher()
         }.sink(receiveValue: { (_) in
-            debugPrint("done!")
+            //
         })]
         
         return loader.share().eraseToAnyPublisher()

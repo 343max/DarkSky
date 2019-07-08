@@ -7,7 +7,7 @@ import Foundation
 
 // MARK: - MinutelyDatum
 struct MinutelyDatum: Codable {
-    let time: Int
+    let time: Date
     let precipIntensity: Double
     let precipProbability: Double
     let precipIntensityError: Double?

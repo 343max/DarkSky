@@ -7,7 +7,7 @@ import Foundation
 
 // MARK: - Currently
 struct Currently: Codable {
-    let time: Int
+    let time: Date
     let summary: String
     let icon: Icon
     let nearestStormDistance: Int?
