@@ -8,12 +8,12 @@ import Foundation
 // MARK: - Currently
 struct Currently: Codable {
     let time: Int
-    let summary: Summary
+    let summary: String
     let icon: Icon
-    let nearestStormDistance: Int
-    let nearestStormBearing: Int
-    let precipIntensity: Int
-    let precipProbability: Int
+    let nearestStormDistance: Int?
+    let nearestStormBearing: Int?
+    let precipIntensity: Double
+    let precipProbability: Double
     let temperature: Double
     let apparentTemperature: Double
     let dewPoint: Double

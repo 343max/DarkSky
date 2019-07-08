@@ -8,7 +8,7 @@ import Foundation
 // MARK: - HourlyDatum
 struct HourlyDatum: Codable {
     let time: Int
-    let summary: Summary
+    let summary: String
     let icon: Icon
     let precipIntensity: Double
     let precipProbability: Double

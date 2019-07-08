@@ -20,7 +20,6 @@
 		FF61FB8F22D354B5003F45FE /* Currently.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF61FB8222D354B4003F45FE /* Currently.swift */; };
 		FF61FB9122D354B5003F45FE /* DailyDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF61FB8422D354B5003F45FE /* DailyDatum.swift */; };
 		FF61FB9222D354B5003F45FE /* Flags.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF61FB8522D354B5003F45FE /* Flags.swift */; };
-		FF61FB9322D354B5003F45FE /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF61FB8622D354B5003F45FE /* Summary.swift */; };
 		FF61FB9422D354B5003F45FE /* PrecipType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF61FB8722D354B5003F45FE /* PrecipType.swift */; };
 		FF61FB9522D354B5003F45FE /* Hourly.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF61FB8822D354B5003F45FE /* Hourly.swift */; };
 		FF61FB9622D354B5003F45FE /* HourlyDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF61FB8922D354B5003F45FE /* HourlyDatum.swift */; };
@@ -63,7 +62,6 @@
 		FF61FB8222D354B4003F45FE /* Currently.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currently.swift; sourceTree = "<group>"; };
 		FF61FB8422D354B5003F45FE /* DailyDatum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyDatum.swift; sourceTree = "<group>"; };
 		FF61FB8522D354B5003F45FE /* Flags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flags.swift; sourceTree = "<group>"; };
-		FF61FB8622D354B5003F45FE /* Summary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Summary.swift; sourceTree = "<group>"; };
 		FF61FB8722D354B5003F45FE /* PrecipType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrecipType.swift; sourceTree = "<group>"; };
 		FF61FB8822D354B5003F45FE /* Hourly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hourly.swift; sourceTree = "<group>"; };
 		FF61FB8922D354B5003F45FE /* HourlyDatum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourlyDatum.swift; sourceTree = "<group>"; };
@@ -182,7 +180,6 @@
 				FF61FB8D22D354B5003F45FE /* Minutely.swift */,
 				FF61FB8E22D354B5003F45FE /* MinutelyDatum.swift */,
 				FF61FB8722D354B5003F45FE /* PrecipType.swift */,
-				FF61FB8622D354B5003F45FE /* Summary.swift */,
 				FF61FB9E22D3590A003F45FE /* Temperature.swift */,
 			);
 			path = DarkSkyModel;
@@ -304,7 +301,6 @@
 				CF3C707222D3463A0081EB47 /* LocationCell.swift in Sources */,
 				FF61FB9A22D354B5003F45FE /* Minutely.swift in Sources */,
 				FF61FB9722D354B5003F45FE /* Icon.swift in Sources */,
-				FF61FB9322D354B5003F45FE /* Summary.swift in Sources */,
 				FF61FB9422D354B5003F45FE /* PrecipType.swift in Sources */,
 				CF3C706D22D342FB0081EB47 /* LocationListView.swift in Sources */,
 				FF61FB9522D354B5003F45FE /* Hourly.swift in Sources */,

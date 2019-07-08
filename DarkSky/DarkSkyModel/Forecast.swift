@@ -11,7 +11,7 @@ struct Forecast: Codable {
     let longitude: Double
     let timezone: String
     let currently: Currently
-    let minutely: Minutely
+    let minutely: Minutely?
     let hourly: Hourly
     let daily: Daily
     let flags: Flags

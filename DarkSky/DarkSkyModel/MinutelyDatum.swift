@@ -10,7 +10,7 @@ struct MinutelyDatum: Codable {
     let time: Int
     let precipIntensity: Double
     let precipProbability: Double
-    let precipIntensityError: Int?
+    let precipIntensityError: Double?
     let precipType: PrecipType?
 
     enum CodingKeys: String, CodingKey {

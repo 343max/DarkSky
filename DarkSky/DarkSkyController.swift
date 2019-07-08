@@ -17,7 +17,6 @@ final class DarkSkyNetworkLoader: DarkSkyLoader {
 
     func forecast(for location: Location.Coordinates) -> AnyPublisher<Forecast, Error> {
         let url = URL(string: "https://api.darksky.net/forecast/\(apiKey)/\(location.lat),\(location.long)")!
-        debugPrint("loading \(url)")
         return session.dataTaskPublisher(for: url)
             .map { $0.data }
             .decode(type: Forecast.self, decoder: JSONDecoder())
