@@ -153,6 +153,7 @@
 		CF3C706E22D343360081EB47 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FF61FB9E22D3590A003F45FE /* Temperature.swift */,
 				CF3C706F22D343450081EB47 /* Location.swift */,
 				CF3C707422D380910081EB47 /* WeatherUnits.swift */,
 			);
@@ -183,7 +184,6 @@
 				FF61FB8D22D354B5003F45FE /* Minutely.swift */,
 				FF61FB8E22D354B5003F45FE /* MinutelyDatum.swift */,
 				FF61FB8722D354B5003F45FE /* PrecipType.swift */,
-				FF61FB9E22D3590A003F45FE /* Temperature.swift */,
 			);
 			path = DarkSkyModel;
 			sourceTree = "<group>";

@@ -8,8 +8,6 @@ struct WeatherUnits: EnvironmentKey {
     typealias Value = WeatherUnits
 
     var temperature: Temperature.Unit
-
-
 }
 
 extension EnvironmentValues {

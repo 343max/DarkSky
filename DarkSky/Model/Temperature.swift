@@ -6,6 +6,19 @@ struct Temperature: Codable {
     enum Unit {
         case celsius
         case fahrenheit
+
+        var stringValue: String {
+            switch self {
+            case .fahrenheit:
+                return "°F"
+            case .celsius:
+                return "°C"
+            }
+        }
+
+        mutating func toggle() {
+            self = self == .celsius ? .fahrenheit : .celsius
+        }
     }
     
     init(fahrenheit: Double) {
@@ -21,17 +34,8 @@ struct Temperature: Codable {
         }
     }
 
-    func sign(_ unit: Unit) -> String {
-        switch unit {
-        case .fahrenheit:
-            return "°F"
-        case .celsius:
-            return "°C"
-        }
-    }
-
     func stringValue(_ unit: Unit) -> String {
-        return "\(Int(round(floatValue(unit))))\(sign(unit))"
+        return "\(Int(round(floatValue(unit))))\(unit.stringValue)"
     }
 }
 
