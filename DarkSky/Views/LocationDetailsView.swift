@@ -11,9 +11,10 @@ struct LocationDetailsView : View {
     
     struct ForecastView: View {
         let forecast: Forecast
+        @Environment(\.weatherUnits) private var weatherUnits: WeatherUnits
         
         var body: some View {
-            Text(forecast.currently.temperature.temperature.stringValue(.celsius)).font(.headline)
+            Text(forecast.currently.temperature.temperature.stringValue(weatherUnits.temperature)).font(.headline)
         }
     }
     

@@ -3,7 +3,7 @@ import Foundation
 struct Temperature: Codable {
     private let fahrenheit: Double
     
-    enum Scale {
+    enum Unit {
         case celsius
         case fahrenheit
     }
@@ -12,8 +12,8 @@ struct Temperature: Codable {
         self.fahrenheit = fahrenheit
     }
 
-    func floatValue(_ scale: Scale) -> Double {
-        switch scale {
+    func floatValue(_ unit: Unit) -> Double {
+        switch unit {
         case .fahrenheit:
             return fahrenheit
         case .celsius:
@@ -21,8 +21,8 @@ struct Temperature: Codable {
         }
     }
 
-    func sign(_ scale: Scale) -> String {
-        switch scale {
+    func sign(_ unit: Unit) -> String {
+        switch unit {
         case .fahrenheit:
             return "°F"
         case .celsius:
@@ -30,8 +30,8 @@ struct Temperature: Codable {
         }
     }
 
-    func stringValue(_ scale: Scale) -> String {
-        return "\(Int(round(floatValue(scale))))\(sign(scale))"
+    func stringValue(_ unit: Unit) -> String {
+        return "\(Int(round(floatValue(unit))))\(sign(unit))"
     }
 }
 

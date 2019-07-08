@@ -10,9 +10,10 @@ struct LocationCell : View {
     
     struct ForecastView: View {
         let forecast: Forecast
-        
+        @Environment(\.weatherUnits) private var weatherUnits: WeatherUnits
+
         var body: some View {
-            Text(forecast.currently.temperature.temperature.stringValue(.celsius))
+            Text(forecast.currently.temperature.temperature.stringValue(weatherUnits.temperature))
                 .font(.system(size: 24, design: .default))
                 .fontWeight(.semibold)
         }
