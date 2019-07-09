@@ -3,7 +3,7 @@ import Foundation
 import SwiftUI
 
 protocol DarkSkyLoader {
-    func forecast(for location: Location.Coordinates) -> AnyPublisher<Forecast, Error>
+    func forecast(for location: Location.Coordinates) -> AnyPublisher<Data, URLError>
 }
 
 final class DarkSkyNetworkLoader: DarkSkyLoader {
@@ -15,11 +15,10 @@ final class DarkSkyNetworkLoader: DarkSkyLoader {
         self.session = session
     }
 
-    func forecast(for location: Location.Coordinates) -> AnyPublisher<Forecast, Error> {
+    func forecast(for location: Location.Coordinates) -> AnyPublisher<Data, URLError> {
         let url = URL(string: "https://api.darksky.net/forecast/\(apiKey)/\(location.lat),\(location.long)")!
         return session.dataTaskPublisher(for: url)
             .map { $0.data }
-            .decode(type: Forecast.self, decoder: JSONDecoder())
             .eraseToAnyPublisher()
     }
 }
@@ -27,15 +26,31 @@ final class DarkSkyNetworkLoader: DarkSkyLoader {
 #if DEBUG
 
 final class DarkSkyDiskLoader: DarkSkyLoader {
-    static var forecast: Forecast {
-        let url = Bundle.main.url(forResource: "forecast", withExtension: "json")!
-        let data = try! Data(contentsOf: url)
+    enum SourceFile: String {
+        case forecast = "forecast"
+        case usageLimitError = "usageLimitExceeded"
+    }
+    
+    let json: SourceFile
+    let bundle: Bundle
+    
+    var jsonURL: URL { Bundle.main.url(forResource: json.rawValue, withExtension: "json")! }
+    
+    init(json: SourceFile = .forecast, bundle: Bundle = Bundle.main) {
+        self.json = json
+        self.bundle = bundle
+    }
+    
+    var forecast: Forecast {
+        let data = try! Data(contentsOf: jsonURL)
         return try! JSONDecoder().decode(Forecast.self, from: data)
     }
     
-    func forecast(for location: Location.Coordinates) -> AnyPublisher<Forecast, Error> {
-        return Just(type(of: self).forecast)
-            .setFailureType(to: Error.self)
+    func forecast(for location: Location.Coordinates) -> AnyPublisher<Data, URLError> {
+        let data = try! Data(contentsOf: jsonURL)
+        
+        return Just(data)
+            .setFailureType(to: URLError.self)
             .eraseToAnyPublisher()
     }
 }
@@ -79,6 +94,7 @@ final class DarkSkyController: BindableObject {
         }
         
         let loader = self.loader.forecast(for: location)
+            .decode(type: Forecast.self, decoder: JSONDecoder())
         
         cancellables += [loader
             .sink { [unowned self] (forecast) in

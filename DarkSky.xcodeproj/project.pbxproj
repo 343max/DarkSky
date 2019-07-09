@@ -41,6 +41,8 @@
 		FF61FBA222D35A6B003F45FE /* forecast.json in Resources */ = {isa = PBXBuildFile; fileRef = FF61FBA122D35A6B003F45FE /* forecast.json */; };
 		FF61FBA422D36D37003F45FE /* forecast.json in Resources */ = {isa = PBXBuildFile; fileRef = FF61FBA322D36D36003F45FE /* forecast.json */; };
 		FF61FBA722D48BF1003F45FE /* DarkSkyCaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF61FBA622D48BF1003F45FE /* DarkSkyCaching.swift */; };
+		FF61FBDF22D4972E003F45FE /* usageLimitExceeded.json in Resources */ = {isa = PBXBuildFile; fileRef = FF61FBDE22D4972E003F45FE /* usageLimitExceeded.json */; };
+		FF61FBE122D497F9003F45FE /* ControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF61FBE022D497F9003F45FE /* ControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +94,8 @@
 		FF61FBA122D35A6B003F45FE /* forecast.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = forecast.json; sourceTree = "<group>"; };
 		FF61FBA322D36D36003F45FE /* forecast.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = forecast.json; path = DarkSkyTests/json/forecast.json; sourceTree = SOURCE_ROOT; };
 		FF61FBA622D48BF1003F45FE /* DarkSkyCaching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkSkyCaching.swift; sourceTree = "<group>"; };
+		FF61FBDE22D4972E003F45FE /* usageLimitExceeded.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = usageLimitExceeded.json; path = DarkSkyTests/json/usageLimitExceeded.json; sourceTree = SOURCE_ROOT; };
+		FF61FBE022D497F9003F45FE /* ControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				FF61FBA322D36D36003F45FE /* forecast.json */,
+				FF61FBDE22D4972E003F45FE /* usageLimitExceeded.json */,
 				CF3C705322D33FF40081EB47 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -162,6 +167,7 @@
 				FF61FBA022D35A55003F45FE /* json */,
 				CF3C706122D33FF40081EB47 /* DarkSkyTests.swift */,
 				CF3C706322D33FF40081EB47 /* Info.plist */,
+				FF61FBE022D497F9003F45FE /* ControllerTests.swift */,
 			);
 			path = DarkSkyTests;
 			sourceTree = "<group>";
@@ -312,6 +318,7 @@
 				FF61FBA422D36D37003F45FE /* forecast.json in Resources */,
 				CF3C705722D33FF40081EB47 /* LaunchScreen.storyboard in Resources */,
 				CF3C705422D33FF40081EB47 /* Preview Assets.xcassets in Resources */,
+				FF61FBDF22D4972E003F45FE /* usageLimitExceeded.json in Resources */,
 				CF3C705122D33FF40081EB47 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -367,6 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF3C706222D33FF40081EB47 /* DarkSkyTests.swift in Sources */,
+				FF61FBE122D497F9003F45FE /* ControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

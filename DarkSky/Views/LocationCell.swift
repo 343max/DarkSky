@@ -23,23 +23,21 @@ struct LocationCell : View {
     }
 
     var body: some View {
-        ZStack {
-            MapView(center: location.latLong)
-                .padding([.leading, .trailing], -20)
-                .padding([.top, .bottom], -6)
-            NavigationLink(destination: LocationDetailsView(location: location, controller: controller)) {
-                HStack {
-                    Text(location.name)
-                        .font(.headline)
-                        .color(.white)
-                        .shadow(color: Color.black.opacity(0.6), radius: 4, x: 0, y: 2)
-                    Spacer()
-                    if (controller.forecasts[location.latLong.id] != nil) {
-                        ForecastView(forecast: controller.forecasts[location.latLong.id]!)
-                    }
+        NavigationLink(destination: LocationDetailsView(location: location, controller: controller)) {
+            HStack {
+                Text(location.name)
+                    .font(.headline)
+                    .color(.white)
+                    .shadow(color: Color.black.opacity(0.6), radius: 4, x: 0, y: 2)
+                Spacer()
+                if (controller.forecasts[location.latLong.id] != nil) {
+                    ForecastView(forecast: controller.forecasts[location.latLong.id]!)
                 }
             }
         }
+        .background(MapView(center: location.latLong)
+                .padding([.leading, .trailing], -20)
+                .padding([.top, .bottom], -6))
         .frame(height: 60, alignment: .center)
         .onReceive(controller.forecast(for: location.latLong).receive(on: RunLoop.main).ignoreErrors()) {
             self.forecast = $0

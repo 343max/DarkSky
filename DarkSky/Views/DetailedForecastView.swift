@@ -91,7 +91,7 @@ struct DetailedForecastView : View {
 #if DEBUG
 struct DetailedForecastView_Previews : PreviewProvider {
     static var previews: some View {
-        DetailedForecastView(forecast: DarkSkyDiskLoader.forecast)
+        DetailedForecastView(forecast: DarkSkyDiskLoader().forecast)
     }
 }
 #endif
