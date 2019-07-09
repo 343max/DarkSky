@@ -20,7 +20,7 @@ struct Location {
 }
 
 extension Location.Coordinates: Identifiable {
-    var id: String { "\(lat)/\(long)" }
+    var id: String { "\(lat)_\(long)" }
 }
 
 extension Location: Identifiable {

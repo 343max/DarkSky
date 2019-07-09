@@ -12,7 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             
-            let controller = DarkSkyController(loader: DarkSkyNetworkLoader(apiKey: "ab6d23ede69ee424bd7a4de3e4b7c831"))
+            let controller = DarkSkyController(loader: DarkSkyNetworkLoader(apiKey: "ab6d23ede69ee424bd7a4de3e4b7c831"), cacher: DarkSkyDiscCaching())
 //            let controller = DarkSkyController(loader: DarkSkyDiskLoader())
 
             let view = NavigationView(content: {

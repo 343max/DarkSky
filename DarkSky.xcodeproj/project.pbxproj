@@ -40,6 +40,7 @@
 		FF61FB9F22D3590A003F45FE /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF61FB9E22D3590A003F45FE /* Temperature.swift */; };
 		FF61FBA222D35A6B003F45FE /* forecast.json in Resources */ = {isa = PBXBuildFile; fileRef = FF61FBA122D35A6B003F45FE /* forecast.json */; };
 		FF61FBA422D36D37003F45FE /* forecast.json in Resources */ = {isa = PBXBuildFile; fileRef = FF61FBA322D36D36003F45FE /* forecast.json */; };
+		FF61FBA722D48BF1003F45FE /* DarkSkyCaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF61FBA622D48BF1003F45FE /* DarkSkyCaching.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		FF61FB9E22D3590A003F45FE /* Temperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
 		FF61FBA122D35A6B003F45FE /* forecast.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = forecast.json; sourceTree = "<group>"; };
 		FF61FBA322D36D36003F45FE /* forecast.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = forecast.json; path = DarkSkyTests/json/forecast.json; sourceTree = SOURCE_ROOT; };
+		FF61FBA622D48BF1003F45FE /* DarkSkyCaching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkSkyCaching.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +142,7 @@
 				CF3C705822D33FF40081EB47 /* Info.plist */,
 				CF3C705222D33FF40081EB47 /* Preview Content */,
 				CF3C707322D346440081EB47 /* Views */,
-				FF61FB9C22D354F6003F45FE /* DarkSkyController.swift */,
+				FF61FBA522D48BDF003F45FE /* Controller */,
 			);
 			path = DarkSky;
 			sourceTree = "<group>";
@@ -215,6 +217,15 @@
 				505553A522D3C5620006C87A /* usageLimitExceeded.json */,
 			);
 			path = json;
+			sourceTree = "<group>";
+		};
+		FF61FBA522D48BDF003F45FE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FF61FB9C22D354F6003F45FE /* DarkSkyController.swift */,
+				FF61FBA622D48BF1003F45FE /* DarkSkyCaching.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF3C707522D380910081EB47 /* WeatherUnits.swift in Sources */,
+				FF61FBA722D48BF1003F45FE /* DarkSkyCaching.swift in Sources */,
 				FF61FB9822D354B5003F45FE /* Forecast.swift in Sources */,
 				505553AC22D3C7C60006C87A /* SpinnerView.swift in Sources */,
 				CF3C704B22D33FF30081EB47 /* AppDelegate.swift in Sources */,

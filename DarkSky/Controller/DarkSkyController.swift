@@ -53,6 +53,7 @@ final class DarkSkyController: BindableObject {
     var didChange = PassthroughSubject<Void, Never>()
     
     let loader: DarkSkyLoader
+    let cacher: DarkSkyCaching?
     
     private func sendDidChange() {
         DispatchQueue.main.async {
@@ -64,8 +65,10 @@ final class DarkSkyController: BindableObject {
     
     var cancellables: [Cancellable] = []
     
-    init(loader: DarkSkyLoader) {
+    init(loader: DarkSkyLoader, cacher: DarkSkyCaching? = nil) {
         self.loader = loader
+        self.cacher = cacher
+        forecasts = cacher?.loadForecasts() ?? [:]
     }
     
     func forecast(for location: Location.Coordinates, forceReload: Bool = false) -> AnyPublisher<Forecast, Error> {
@@ -80,6 +83,7 @@ final class DarkSkyController: BindableObject {
         cancellables += [loader
             .sink { [unowned self] (forecast) in
                 self.forecasts[location.id] = forecast
+                try? self.cacher?.save(location: location.id, forecast: forecast)
             }]
         
         cancellables += [loader.catch { (error) -> AnyPublisher<Forecast, Error> in
