@@ -52,23 +52,22 @@ struct DetailedForecastView : View {
                     .frame(width: 55)
             }.padding(.bottom, 2)
         }
-
     }
     
     var body: some View {
         ScrollView(.vertical) {
             VStack {
-                Text(forecast.currently.temperature.temperature.stringValue(weatherUnits.temperature))
-                    .font(.system(size: 62))
+                Text([forecast.currently.icon.emoji,
+                      forecast.currently.temperature.temperature.stringValue(weatherUnits.temperature)]
+                    .joined(separator: " "))
+                    .font(.system(size: 42))
                     .fontWeight(.semibold)
-                Text(forecast.currently.icon.emoji).padding(.bottom)
                 Text(forecast.currently.summary)
+                    .lineLimit(nil)
                 
                 VStack {
-                    HStack {
-                        Text("\(forecast.hourly.icon.emoji) \(forecast.hourly.summary)")
-                        Spacer()
-                    }
+                    Text("\(forecast.hourly.icon.emoji) \(forecast.hourly.summary)")
+                        .lineLimit(nil)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             ForEach(forecast.hourly.data) { (hourly) in
