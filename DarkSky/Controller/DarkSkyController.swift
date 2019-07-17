@@ -64,15 +64,14 @@ extension DarkSkyController {
 #endif
 
 final class DarkSkyController: BindableObject {
-    typealias PublisherType = PassthroughSubject<Void, Never>
-    var didChange = PassthroughSubject<Void, Never>()
+    var willChange = PassthroughSubject<Void, Never>()
     
     let loader: DarkSkyLoader
     let cacher: DarkSkyCaching?
     
     private func sendDidChange() {
         DispatchQueue.main.async {
-            self.didChange.send()
+            self.willChange.send()
         }
     }
     
@@ -97,14 +96,15 @@ final class DarkSkyController: BindableObject {
             .decode(type: Forecast.self, decoder: JSONDecoder())
         
         cancellables += [loader
+            .catch { _ in Empty() }
             .sink { [unowned self] (forecast) in
                 self.forecasts[location.id] = forecast
                 try? self.cacher?.save(location: location.id, forecast: forecast)
             }]
         
-        cancellables += [loader.catch { (error) -> AnyPublisher<Forecast, Error> in
+        cancellables += [loader.catch { (error) -> Empty<Forecast, Never> in
             debugPrint("error: \(error)")
-            return Publishers.Empty<Forecast, Error>().eraseToAnyPublisher()
+            return Empty<Forecast, Never>()
         }.sink(receiveValue: { (_) in
             //
         })]
@@ -116,7 +116,7 @@ final class DarkSkyController: BindableObject {
 extension Publisher {
     public func ignoreErrors() -> AnyPublisher<Self.Output, Never> {
         return self.catch { (_) in
-            return Publishers.Empty<Self.Output, Never>()
+            Empty<Self.Output, Never>()
         }.eraseToAnyPublisher()
     }
 }

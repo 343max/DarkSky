@@ -17,7 +17,7 @@ struct LocationCell : View {
                   forecast.currently.temperature.temperature.stringValue(weatherUnits.temperature)].joined(separator: " "))
                 .font(.system(size: 24, design: .default))
                 .fontWeight(.semibold)
-                .color(.white)
+                .foregroundColor(.white)
                 .shadow(color: Color.black.opacity(0.6), radius: 4, x: 0, y: 2)
         }
     }
@@ -27,7 +27,7 @@ struct LocationCell : View {
             HStack {
                 Text(location.name)
                     .font(.headline)
-                    .color(.white)
+                    .foregroundColor(.white)
                     .shadow(color: Color.black.opacity(0.6), radius: 4, x: 0, y: 2)
                 Spacer()
                 if (controller.forecasts[location.latLong.id] != nil) {
